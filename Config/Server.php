@@ -1,5 +1,5 @@
 <?php 
 
-    define("BASE_URL","http://localhost/mvc-post/");
+    define("BASE_URL","http://localhost/mvc-gestor-canal/");
 
     
