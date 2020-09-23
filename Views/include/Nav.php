@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?=BASE_URL;?>Nosotros/" class="nav-link">
                         Nosotros
                     </a>
                 </li>

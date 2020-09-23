@@ -1,7 +1,7 @@
 <header class="encabezado container"> 
     <div class="row justify-content-md-between">
         <div class="col-lg-4">
-            <img src="<?php echo BASE_URL; ?>Views/assets/img/logo2.svg" class="img-fluid mx-auto d-block" alt="">
+            <a href="<?=BASE_URL;?>"><img src="<?php echo BASE_URL; ?>Views/assets/img/logo2.svg" class="img-fluid mx-auto d-block" alt=""></a>
         </div>
         <div class="col-lg-4">
             <nav class="sociales text-center text-lg-right">
