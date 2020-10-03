@@ -14,24 +14,29 @@ Class App {
                     require_once'Views/nosotros.php';
                     break;
                 
+                case 'programacion':
+                    require_once'Views/programacion.php';
+                    break;    
+                
                 default: if ($_REQUEST['c']=="Admin") {
-                    $n_controller= $_GET['c'].'Controller';
-                    $controller= new $n_controller();
+                            $n_controller= $_GET['c'].'Controller';
+                            $controller= new $n_controller();
                     
-                    if ($_REQUEST['a']=="") {
+                            if ($_REQUEST['a']=="") {
                         
-                        $accion='login';            
-                    } 
-                    else {$accion=$_REQUEST['a'];}
-                } else {
-                    $n_controller= $_REQUEST['c'].'Controller';
-                    $controller= new $n_controller();
-                    if ($_REQUEST['a']=="") {
-                        $accion='index';
-                    } else {$accion=$_REQUEST['a'];}
-                }
+                            $accion='login';            
+                            } 
+                            else {$accion=$_REQUEST['a'];}
+                        } 
+                        else {
+                            $n_controller= $_REQUEST['c'].'Controller';
+                            $controller= new $n_controller();
+                            if ($_REQUEST['a']=="") {
+                            $accion='index';
+                            } else {$accion=$_REQUEST['a'];}
+                        }
                 call_user_func( array( $controller, $accion) );
-            # code...
+            
                 break;  
             }
             }

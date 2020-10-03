@@ -7,7 +7,7 @@
 
 <div class="container">
 <div class="row py-4">
-        <a href="">
+        <a href="" >
             <div class="col-md-4 text-center mb-4">
                 <div class="imagen-noticia">
                     <div class="img-p">
@@ -22,6 +22,10 @@
                         Pero antes. El MVC separa tres aspectos 
 
                         </p>
+
+
+
+
                         <a href="" class="btn btn-primary btn-block text-uppercase mt-4 py-2">leer noticia</a>
                         </div>
                     </div>

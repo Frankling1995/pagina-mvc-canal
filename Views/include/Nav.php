@@ -16,7 +16,7 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?=BASE_URL;?>programacion/" class="nav-link">
                         Programacion
                     </a
                 ></li>
