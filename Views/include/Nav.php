@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse  " id="nav_principal">
             <ul class="nav nav-justified w-100 flex-column flex-sm-row">
                 <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="<?=BASE_URL;?>noticias/" class="nav-link">
                         Noticias
                 </a>
                 </li>

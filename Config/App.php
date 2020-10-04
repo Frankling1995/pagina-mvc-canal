@@ -15,8 +15,17 @@ Class App {
                     break;
                 
                 case 'programacion':
-                    require_once'Views/programacion.php';
+                    require_once'Views/programacion/programacion.php';
                     break;    
+                case 'noticias':
+                    require_once'Views/noticia/noticias.php';
+                    break; 
+                case 'envivo':
+                    require_once'Views/envivo.php';
+                    break; 
+                case 'contacto':
+                    require_once'Views/contacto.php';
+                    break; 
                 
                 default: if ($_REQUEST['c']=="Admin") {
                             $n_controller= $_GET['c'].'Controller';
