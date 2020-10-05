@@ -31,7 +31,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="<?=BASE_URL;?>contacto/" class="nav-link">
                         Contactanos 
                     </a>
                 </li>
