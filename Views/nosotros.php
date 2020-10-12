@@ -23,7 +23,7 @@
 
                     <div id="accordion" role="tablist" aria-multiselectable="true">
 
-                            <div class="panel panel-default">
+                            <div class="panel panel-default" id="media">
 
                                 <h4 class="panel-heading">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#tab-mision"> MISIÓN </a>

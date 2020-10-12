@@ -10,24 +10,22 @@ class MediaModel extends Model{
     public function __GET($k){ return $this->$k; }
     public function __SET($k, $v){return $this->$k = $v;}
 
+    public function Set_Object($r){
+
+    }
 
     public function Get_media_id($id){
         try 
 		{
 			$stm = $this->pdo
                       ->prepare("SELECT * FROM media WHERE id=? ");
-            
-			$stm->execute(array($nick));
-			$r = $stm->fetch(PDO::FETCH_OBJ);
-            
-            $this->id=$r->id;
-            $this->url_media=$r->url_media;
-            $this->tipo=$r->tipo;
-		} catch (Exception $e) 
+			$stm->execute(array($id));
+			$r = $stm->fetch(PDO::FETCH_OBJ);            
+            return $r;
+        } 
+        catch (Exception $e) 
 		{
 			die($e->getMessage());
 		}
-
     }
-
 }

@@ -8,7 +8,7 @@ class Model {
 	{
 		try
 		{
-			$this->pdo = new PDO('mysql:host=localhost;dbname=posts', 'root', '');
+			$this->pdo = new PDO('mysql:host=localhost;dbname=canal', 'root', '');
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);	
 		}
 		catch(Exception $e)
