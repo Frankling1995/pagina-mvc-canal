@@ -3,7 +3,12 @@
 
 Class App {
 
+//METODO ENCARGADO DEL ENRUTAMIENTO 
+    // ES CONTROLADO POR LA VARIABLES HTTP  C =CONTROLADOR O VIEW Y a= METODO A INVOCAR 
+    //POR MEDIO DE LA FUNCION  call_user_func( array( $controller, $accion) );
+
     public function Router (){
+
         if(!isset($_REQUEST['c'])){
         
             require_once'Views/Inicio.php';
@@ -51,13 +56,13 @@ Class App {
             }
     }
 
+//UTILS PARA COMPROBAR LA SECCION ADMINISTRADOR 
     public  function IsAdmin(){
 
-        
-    
     
     }
 
+//FILTAR IPS DE ENTRADA 
     public function Whitelist(){
         
     }

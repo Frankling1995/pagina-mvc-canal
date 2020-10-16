@@ -1,5 +1,6 @@
 <?php 
+    //CONSTANTES BASES DE LA WEB
 
-    define("BASE_URL","http://localhost/mvc-gestor-canal/");
+    define("BASE_URL","http://localhost/pagina-mvc-canal/");
 
     

@@ -3,21 +3,29 @@ require_once 'Models/MediaModel.php';
 
 class MediaController{
 
-    public $tabla_name='media';
 
     public function Mediaid(){
-        $id=$_GET['id'];
-        $Model = new MediaModel();
-        $media=$Model->Get_media_id($id); 
-        echo json_encode($media); 
+    $id=$_GET['id'];
+    $Model = new MediaModel();
+    $respuesta=$Model->Get_media_id($id); 
+    if ($respuesta!=false) {
+        echo json_encode($respuesta); 
+    } else {
+        echo json_encode($respuesta=[
+            'response'=>'Dato no encontrado',
+            'Estado'=>'error'
+        ]); 
+    }
+    
     }
 
-    public function Media_all(){
+    public function Medias(){
+        
         $Model = new MediaModel();
-        $media=$Model->Get_all($this->tabla_name); 
+        $media=$Model->Get_all('media'); 
         echo json_encode($media); 
+        }
 
-    }
-
+    
 
 }
