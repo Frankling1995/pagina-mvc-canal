@@ -3,7 +3,7 @@ require_once 'Models/MediaModel.php';
 
 class MediaController{
 
-
+//MUESTRA LA MEDIA INDICA POR EL ID
     public function Mediaid(){
     $id=$_GET['id'];
     $Model = new MediaModel();
@@ -19,6 +19,7 @@ class MediaController{
     
     }
 
+//RETORNA TODOS LAS MEDIAS CONTENIDAS EN LA BASE DATOS
     public function Medias(){
         
         $Model = new MediaModel();
@@ -34,6 +35,26 @@ class MediaController{
         ]);
         $Model->Guardar();
     }
+
+    public function actualizar(){
+        $id=1;
+        $Model = new MediaModel();
+        $Model->Set_Object($formData=[
+            'url_media'=>'prueba1.jpg',
+            'tipo'=>'imagen'
+        ]);
+
+        $Model->_SET('id',$id);
+
+        $respuesta=$Model->Actualizar();
+        echo json_encode($rs=[
+            'response'=>$respuesta,
+            'Estado'=>'Correcto'
+        ]);
+
+    }
+
+
     
     //BORRAR MEDIA 
     public function borrar(){

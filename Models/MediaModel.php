@@ -7,8 +7,8 @@ class MediaModel extends Model {
     private $url_media;
     private $tipo;
 
-    public function __GET($k){ return $this->$k; }
-    public function __SET($k, $v){return $this->$k = $v;}
+    public function _GET($k){ return $this->$k; }
+    public function _SET($k, $v){return $this->$k = $v;}
 
 //SETEA EL OBJETE MODELO CON LOS VALORES CONTENIDOS EN $r
     public function Set_Object($r){
@@ -55,13 +55,31 @@ class MediaModel extends Model {
 //METODO UPDATE 
 
     public function Actualizar(){
+
+        try {
+            $sql="UPDATE media SET url_media= ? , tipo= ? WHERE id =?";
+            $stm=$this->pdo->prepare($sql)->execute(
+                array(
+                    $this->url_media,
+                    $this->tipo,
+                    $this->id
+                ));
+    
+                return "Dato actualizado";
+        } catch (Exception $e) {
+            return " error en la consulta ";
+        }
         
+        
+        
+        
+       
     }
 
 
 //METODO DELETE     
 
-    public function Eliminar($id){
+    public function Eliminar(){
 
         $sql= "DELETE FROM MEDIA WHERE id= ?";
         try {
