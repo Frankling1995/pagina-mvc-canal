@@ -52,6 +52,13 @@ class MediaModel extends Model {
 
     }
 
+//METODO UPDATE 
+
+    public function Actualizar(){
+        
+    }
+
+
 //METODO DELETE     
 
     public function Eliminar($id){
@@ -60,9 +67,11 @@ class MediaModel extends Model {
         try {
             $stm=$this->pdo->prepare($sql);
             $stm->execute(array($id));
+            return "Media eliminida satisfactoriamente";
         } catch (Exception $e) {
             return " error en la consulta ";
         }
 
     }
+
 }

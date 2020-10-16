@@ -35,6 +35,15 @@ class MediaController{
         $Model->Guardar();
     }
     
-    public fun
+    //BORRAR MEDIA 
+    public function borrar(){
+        $id=$_GET['id'];
+        $Model= new MediaModel();
+        $respuesta=$Model->Eliminar($id);
+        echo json_encode($rs=[
+            'response'=>$respuesta,
+            'Estado'=>'Correcto'
+        ]);
+    }
 
 }
