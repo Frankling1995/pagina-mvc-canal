@@ -10,12 +10,13 @@ class MediaModel extends Model {
     public function __GET($k){ return $this->$k; }
     public function __SET($k, $v){return $this->$k = $v;}
 
+//SETEA EL OBJETE MODELO CON LOS VALORES CONTENIDOS EN $r
     public function Set_Object($r){
-        $this->id=$r->id; 
-        $this->url_media = $r->url_media;
-        $this->tipo= $r->tipo;
+        
+        $this->url_media = $r['url_media'];
+        $this->tipo= $r['tipo'];
     }
-
+//CONSULTA UN UNICO REGISTRO SEGUN UN ID DADO 
     public function Get_media_id($id){
         $sql="SELECT * FROM media WHERE id=? ";
         try 
@@ -32,15 +33,23 @@ class MediaModel extends Model {
 		}
     }
 
-    public function Get_all_media(){
-    $sql="SELECT * FROM media  ";
-    
-    try {
-        $stm= $this->pdo
-                        ->prepare($sql);
-    } catch (Exception $e) {
-           //throw $th;
-    } 
+//METODO INSERT 
+
+    public function Guardar(){
+        
+        $sql= "INSERT INTO media (url_media,tipo) VALUES (?,?)";
+        try {
+            $stm=$this->pdo->prepare($sql)
+            ->execute(
+            array(
+                $this->url_media,
+                $this->tipo,
+            ));
+        } catch (Exception $e) {
+            return 'Error en el sql';
+        }
+
+
     }
 
 }

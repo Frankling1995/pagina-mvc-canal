@@ -25,7 +25,15 @@ class MediaController{
         $media=$Model->Get_all('media'); 
         echo json_encode($media); 
         }
-
+    
+    public function guardar(){
+        $Model = new MediaModel();
+        $Model->Set_Object($formData=[
+            'url_media'=>'prueba4.jpg',
+            'tipo'=>'imagen'
+        ]);
+        $Model->Guardar();
+    }
     
 
 }
