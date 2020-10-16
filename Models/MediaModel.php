@@ -52,4 +52,17 @@ class MediaModel extends Model {
 
     }
 
+//METODO DELETE     
+
+    public function Eliminar($id){
+
+        $sql= "DELETE FROM MEDIA WHERE id= ?";
+        try {
+            $stm=$this->pdo->prepare($sql);
+            $stm->execute(array($id));
+        } catch (Exception $e) {
+            return " error en la consulta ";
+        }
+
+    }
 }

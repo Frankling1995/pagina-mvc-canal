@@ -35,5 +35,6 @@ class MediaController{
         $Model->Guardar();
     }
     
+    public fun
 
 }
