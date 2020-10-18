@@ -26,7 +26,7 @@ class MediaController{
         $media=$Model->Get_all('media'); 
         echo json_encode($media); 
         }
-    
+//GUARDAR MEDIA     
     public function guardar(){
         $Model = new MediaModel();
         $Model->Set_Object($formData=[
@@ -36,6 +36,7 @@ class MediaController{
         $Model->Guardar();
     }
 
+//ACTUALIZAR MEDIA 
     public function actualizar(){
         $id=1;
         $Model = new MediaModel();
@@ -56,7 +57,7 @@ class MediaController{
 
 
     
-    //BORRAR MEDIA 
+//BORRAR MEDIA 
     public function borrar(){
         $id=$_GET['id'];
         $Model= new MediaModel();
@@ -66,5 +67,6 @@ class MediaController{
             'Estado'=>'Correcto'
         ]);
     }
+    
 
 }

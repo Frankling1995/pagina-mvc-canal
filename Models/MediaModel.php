@@ -2,15 +2,15 @@
 require_once 'Model.php';
 
 class MediaModel extends Model {
-
+//CAMPOS DE LA TABLA
     private $id;
     private $url_media;
     private $tipo;
-
+//METODO GET Y SET 
     public function _GET($k){ return $this->$k; }
     public function _SET($k, $v){return $this->$k = $v;}
 
-//SETEA EL OBJETE MODELO CON LOS VALORES CONTENIDOS EN $r
+//SETEA EL OBJETO MODELO CON LOS VALORES CONTENIDOS EN $r
     public function Set_Object($r){
         
         $this->url_media = $r['url_media'];
@@ -31,6 +31,23 @@ class MediaModel extends Model {
 		{
 			return 'Error en el sql';
 		}
+    }
+
+//CONSULTA UNA MEDIA SEGUN EL FILENAME
+    public function Get_media_filename($filename){
+    $sql="SELECT * FROM media WHERE url_media=? ";
+    try 
+    {
+        $stm = $this->pdo
+                ->prepare($sql);
+        $stm->execute(array($filename));
+        $r = $stm->fetch(PDO::FETCH_OBJ);            
+        return $r;
+    } 
+    catch (Exception $e) 
+    {
+        return 'Error en el sql';
+    }
     }
 
 //METODO INSERT 
