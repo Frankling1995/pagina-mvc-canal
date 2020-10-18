@@ -2,21 +2,15 @@
 require_once 'Model.php';
 
 class MediaModel extends Model {
-<<<<<<< HEAD
+
 
 //CAMPOS DE LA TABLA 
     private $id;
     private $url_media;
     private $tipo;
 
-//METODOS GET Y SET    
-=======
-//CAMPOS DE LA TABLA
-    private $id;
-    private $url_media;
-    private $tipo;
 //METODO GET Y SET 
->>>>>>> 49783ffd3b213070b4a1e2738a40e1f463f8cf22
+
     public function _GET($k){ return $this->$k; }
     public function _SET($k, $v){return $this->$k = $v;}
 
@@ -42,8 +36,25 @@ class MediaModel extends Model {
 			return 'Error en el sql';
 		}
     }
+//METODO CREATE 
 
-//CONSULTA UNA MEDIA SEGUN EL FILENAME
+public function Guardar(){
+        
+    $sql= "INSERT INTO media (url_media,tipo) VALUES (?,?)";
+    try {
+        $stm=$this->pdo->prepare($sql)
+        ->execute(
+        array(
+            $this->url_media,
+            $this->tipo,
+        ));
+    } catch (Exception $e) {
+        return 'Error en el sql';
+    }
+
+
+}
+//METODO READ MEDIA SEGUN EL FILENAME
     public function Get_media_filename($filename){
     $sql="SELECT * FROM media WHERE url_media=? ";
     try 
@@ -60,24 +71,7 @@ class MediaModel extends Model {
     }
     }
 
-//METODO INSERT 
 
-    public function Guardar(){
-        
-        $sql= "INSERT INTO media (url_media,tipo) VALUES (?,?)";
-        try {
-            $stm=$this->pdo->prepare($sql)
-            ->execute(
-            array(
-                $this->url_media,
-                $this->tipo,
-            ));
-        } catch (Exception $e) {
-            return 'Error en el sql';
-        }
-
-
-    }
 
 //METODO UPDATE 
 
