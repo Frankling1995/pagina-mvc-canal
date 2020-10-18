@@ -3,10 +3,12 @@ require_once 'Model.php';
 
 class MediaModel extends Model {
 
+//CAMPOS DE LA TABLA 
     private $id;
     private $url_media;
     private $tipo;
 
+//METODOS GET Y SET    
     public function _GET($k){ return $this->$k; }
     public function _SET($k, $v){return $this->$k = $v;}
 
@@ -69,11 +71,7 @@ class MediaModel extends Model {
         } catch (Exception $e) {
             return " error en la consulta ";
         }
-        
-        
-        
-        
-       
+
     }
 
 
