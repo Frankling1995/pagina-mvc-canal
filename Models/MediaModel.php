@@ -38,22 +38,22 @@ class MediaModel extends Model {
     }
 //METODO CREATE 
 
-public function Guardar(){
-        
-    $sql= "INSERT INTO media (url_media,tipo) VALUES (?,?)";
-    try {
-        $stm=$this->pdo->prepare($sql)
-        ->execute(
-        array(
-            $this->url_media,
-            $this->tipo,
-        ));
-    } catch (Exception $e) {
-        return 'Error en el sql';
+    public function Guardar(){
+            
+        $sql= "INSERT INTO media (url_media,tipo) VALUES (?,?)";
+        try {
+            $stm=$this->pdo->prepare($sql)
+            ->execute(
+            array(
+                $this->url_media,
+                $this->tipo,
+            ));
+        } catch (Exception $e) {
+            return 'Error en el sql';
+        }
+
+
     }
-
-
-}
 //METODO READ MEDIA SEGUN EL FILENAME
     public function Get_media_filename($filename){
     $sql="SELECT * FROM media WHERE url_media=? ";

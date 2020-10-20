@@ -8,7 +8,7 @@
 
    function autoload ($classname) {
 
-      return require_once 'controllers/'.$classname.'.php';
+      return require_once 'Controllers/'.$classname.'.php';
    
    }
 

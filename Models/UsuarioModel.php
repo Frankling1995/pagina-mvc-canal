@@ -1,15 +1,26 @@
 <?php
 
-require_once 'Models.php';
+require_once 'Model.php';
 
 
-class UsuarioModdel extends Model{
+class UsuarioModel extends Model{
 
-    private $id ;
+    private $id;
     private $username;
     private $password;
     private $id_rol;
     private $fullname;
+
+//SETEAR EL OBJETO 
+    public function Set_Object($r){
+        $this->id=$r['id'];
+        $this->username=$r['username'];
+        $this->password=$r['password'];
+        $this->id_rol=$r['id_rol'];
+        $this->fullname=$r['fullname'];
+
+        
+    }
 
 //METODO CREATE 
 
@@ -17,9 +28,17 @@ class UsuarioModdel extends Model{
         $sql="INSERT INTO  usuario (username,password,id_rol, fullname) VALUES (?,?,?,?) ";
         
         try {
-            //code...
+            $stm=$this->pdo->prepare($sql)->execute(array(
+                $this->username,
+                $this->password,
+                $this->id_rol,
+                $this->fullname
+            ));
+
+            return "Datos agregados";
         } catch (Exception $e) {
-            //throw $th;
+        
+            return $e;
         }
         
 
@@ -27,7 +46,11 @@ class UsuarioModdel extends Model{
 
 //METODO READ SEGUN UN USERNAME    
     public function Get_username($username){
-        $sql= "SELECT username, password, rol ,fullname  FROM usuario WHERE  username=?";
+        $sql= "SELECT username, password, rol ,fullname ";
+        $sql.=" FROM usuario ";
+        $sql.=" INNER JOIN rol ";
+        $sql.=" ON usuario.id_rol = rol.id ";
+        $sql.=" WHERE  username=? ";
         try {
             $stm= $this->pdo->prepare($sql);
             $stm->execute(array($username));
