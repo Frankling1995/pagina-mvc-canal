@@ -7,25 +7,40 @@ class UsuarioController {
 
     public function registrar(){
 
-    $password="admin";
-        $hash=password_hash($password,PASSWORD_BCRYPT);
-     
-        $Usuario = new UsuarioModel();
+    $url_actual = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+        
+        if ($url_actual===REGISTRO) {
+            $password="editor";
+            $hash=password_hash($password,PASSWORD_BCRYPT);
+            $Usuario = new UsuarioModel();
+            $Usuario->Set_Object(array(
+                    'id'=>'',
+                    'username'=>'editor2',
+                    'password'=>$hash,
+                    'id_rol'=>2,
+                    'fullname'=>'editor2'
+                ));
+            $respuesta=$Usuario->Guardar();
+            echo $respuesta;
+        
+            } else {
+                echo "No puedes acceder a esta ruta";
+            }
+            
+        
 
-        $Usuario->Set_Object(array(
-            'id'=>'',
-            'username'=>'admin',
-            'password'=>$hash,
-            'id_rol'=>1,
-            'fullname'=>'Administrador'
-        ));
+    }
 
-        $respuesta=$Usuario->Guardar();
+    public function Usuarios(){
+        
+        $Usuario= new UsuarioModel();
+        $Usuarios=$Usuario->Get_usuarios('usuario'); 
+        echo json_encode($Usuarios); 
 
-        echo $respuesta;
 
 
     }
+
 
     public function test (){
 

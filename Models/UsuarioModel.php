@@ -65,5 +65,26 @@ class UsuarioModel extends Model{
     }
 
 
+//METODO READ ALL
+
+public function Get_usuarios(){
+    $sql= "SELECT username,  rol ,fullname ";
+    $sql.=" FROM usuario ";
+    $sql.=" INNER JOIN rol ";
+    $sql.=" ON usuario.id_rol = rol.id ";
+    try {
+        $stm= $this->pdo->prepare($sql);
+        $stm->execute();
+        $r=$stm->fetchAll(PDO::FETCH_OBJ);
+        return $r;
+
+    } catch (Exception $e) {
+        return "Error SQL ";
+    }
+    
+
+}
+
+
 
 }
