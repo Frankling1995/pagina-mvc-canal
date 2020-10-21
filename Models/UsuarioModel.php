@@ -5,6 +5,7 @@ require_once 'Model.php';
 
 class UsuarioModel extends Model{
 
+//CAMPOS EN LA TABLA 
     private $id;
     private $username;
     private $password;
@@ -35,7 +36,7 @@ class UsuarioModel extends Model{
                 $this->fullname
             ));
 
-            return "Datos agregados";
+            return "Datos del usuario ".$this->fullname." agregados ";
         } catch (Exception $e) {
         
             return $e;
@@ -66,25 +67,92 @@ class UsuarioModel extends Model{
 
 
 //METODO READ ALL
+    public function Get_usuarios(){
+        $sql= "SELECT username,  rol ,fullname ";
+        $sql.=" FROM usuario ";
+        $sql.=" INNER JOIN rol ";
+        $sql.=" ON usuario.id_rol = rol.id ";
+        try {
+            $stm= $this->pdo->prepare($sql);
+            $stm->execute();
+            $r=$stm->fetchAll(PDO::FETCH_OBJ);
+            return $r;
 
-public function Get_usuarios(){
-    $sql= "SELECT username,  rol ,fullname ";
-    $sql.=" FROM usuario ";
-    $sql.=" INNER JOIN rol ";
-    $sql.=" ON usuario.id_rol = rol.id ";
-    try {
-        $stm= $this->pdo->prepare($sql);
-        $stm->execute();
-        $r=$stm->fetchAll(PDO::FETCH_OBJ);
-        return $r;
+        } catch (Exception $e) {
+            return "Error SQL ";
+        }
+        
 
-    } catch (Exception $e) {
-        return "Error SQL ";
     }
+
+//METODO DELETE
+    public function Eliminar(){
+        $sql="DELETE FROM  usuario Where id=?";
+    try {
+        $stm=$this->pdo->prepare($sql);
+        $stm->execute(array(
+        $this->id
+        ));
+        return "Usuario Eliminado";
+    } catch (Exception $e) {
+        
+        return "Error SQL " .$e;
+
+    }
+    }
+//METODO UPDATE 
+    public function Actualizar(){
+        $sql="UPDATE usuarios SET username=?, password=?, id_rol, fullname=?  WHERE id =?";
+        try {
+            $stm=$this->pdo->prepare();
+            $stm->execute(array(
+                $this->username,
+                $this->password,
+                $this->id_rol,
+                $this->fullname,
+                $this->id
+            ));
+            return "El Usuario".$this->fullname."ha sido actualizado";    
+        } catch (Exception $e) {
+        
+            return "Error SQL " .$e;
+    
+        }
+    }
+//METODO OBTENER TODOS  USUARIOS SEGUN UN ROL
+    public function Get_ALL_rol($rol){
+        $sql= "SELECT username, password, rol ,fullname ";
+        $sql.=" FROM usuario ";
+        $sql.=" INNER JOIN rol ";
+        $sql.=" ON usuario.id_rol = rol.id ";
+        $sql.=" WHERE  id_rol=1 ";
+        try {
+            $stm= $this->pdo->prepare($sql);
+            $stm->execute(array($rol));
+            $r=$stm->fetch(PDO::FETCH_OBJ);
+            return $r;
+
+        } catch (Exception $e) {
+            return "Error SQL ";
+        }
+        
+
+    }
+
+
+
+
+}
+
+
+
+
+
+
+
     
 
-}
 
 
 
-}
+
