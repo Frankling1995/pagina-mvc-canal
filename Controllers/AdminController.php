@@ -23,8 +23,23 @@ class AdminController{
 
     public function Principal(){
 
+        require_once 'Views/Admin/Principal.php';
 
     }
+
+    public function Validacion(){
+        UsuarioController::Login();
+        AdminController::Principal();
+    }
+
+    public function LOGOUT(){
+        session_unset ();
+        session_destroy();
+        
+        header('location:'.LOGING);
+    }
+
+    
 
     
 

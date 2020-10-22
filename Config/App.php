@@ -58,9 +58,18 @@ Class App {
 
 //UTILS PARA COMPROBAR LA SECCION ADMINISTRADOR 
     public  function IsAdmin(){
+       if (isset($_SESSION)) {
+        AdminController::Principal();
+       } else {
+        AdminController::login();
+       }
+        
+
 
     
     }
+
+    
 
 //FILTAR IPS DE ENTRADA 
     public function Whitelist(){

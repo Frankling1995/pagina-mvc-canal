@@ -52,7 +52,7 @@ class UsuarioModel extends Model{
 
 //METODO READ SEGUN UN USERNAME    
     public function Get_username($username){
-        $sql= "SELECT username, rol ,fullname ";
+        $sql= "SELECT username, password,rol ,fullname ";
         $sql.=" FROM usuario ";
         $sql.=" INNER JOIN rol ";
         $sql.=" ON usuario.id_rol = rol.id ";
