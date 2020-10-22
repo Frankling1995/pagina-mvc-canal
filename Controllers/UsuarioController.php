@@ -3,7 +3,7 @@ require_once 'Models/UsuarioModel.php';
 
 class UsuarioController {   
 
-//METODO REGISTRAR 
+//REGISTRAR USUARIO 
 
     public function registrar(){
 
@@ -101,6 +101,8 @@ class UsuarioController {
         }
         
     }
+
+
 
 
 
