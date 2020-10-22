@@ -47,7 +47,7 @@ class UsuarioModel extends Model{
 
 //METODO READ SEGUN UN USERNAME    
     public function Get_username($username){
-        $sql= "SELECT username, password, rol ,fullname ";
+        $sql= "SELECT username, rol ,fullname ";
         $sql.=" FROM usuario ";
         $sql.=" INNER JOIN rol ";
         $sql.=" ON usuario.id_rol = rol.id ";
@@ -121,15 +121,15 @@ class UsuarioModel extends Model{
     }
 //METODO OBTENER TODOS  USUARIOS SEGUN UN ROL
     public function Get_ALL_rol($rol){
-        $sql= "SELECT username, password, rol ,fullname ";
+        $sql= "SELECT username, rol ,fullname ";
         $sql.=" FROM usuario ";
         $sql.=" INNER JOIN rol ";
         $sql.=" ON usuario.id_rol = rol.id ";
-        $sql.=" WHERE  id_rol=1 ";
+        $sql.=" WHERE  id_rol=? ";
         try {
             $stm= $this->pdo->prepare($sql);
             $stm->execute(array($rol));
-            $r=$stm->fetch(PDO::FETCH_OBJ);
+            $r=$stm->fetchAll(PDO::FETCH_OBJ);
             return $r;
 
         } catch (Exception $e) {

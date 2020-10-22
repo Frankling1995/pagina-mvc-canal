@@ -30,16 +30,29 @@ class UsuarioController {
         
 
     }
-
+//TODOS LOS USUARIOS
     public function Usuarios(){
-        
         $Usuario= new UsuarioModel();
-        $Usuarios=$Usuario->Get_usuarios('usuario'); 
-        echo json_encode($Usuarios); 
+        if ($_GET['rol']) {
+            $rol=$_GET['rol'];           
+            $Usuarios=$Usuario->Get_ALL_rol($rol); 
+            echo json_encode($Usuarios);
+        } elseif ($_GET['user']) {
+            $user=$_GET['user'];            
+            $Usuarios=$Usuario->Get_username($user); 
+            echo json_encode($Usuarios); 
+        }else{
+            $Usuarios=$Usuario->Get_usuarios(); 
+            echo json_encode($Usuarios); 
+
+        }
+        
+        
 
 
 
     }
+
 
 
 
