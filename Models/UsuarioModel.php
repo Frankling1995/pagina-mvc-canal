@@ -12,6 +12,11 @@ class UsuarioModel extends Model{
     private $id_rol;
     private $fullname;
 
+//METODO GET Y SET 
+
+    public function _GET($k){ return $this->$k; }
+    public function _SET($k, $v){return $this->$k = $v;}    
+
 //SETEAR EL OBJETO 
     public function Set_Object($r){
         $this->id=$r['id'];
@@ -68,7 +73,7 @@ class UsuarioModel extends Model{
 
 //METODO READ ALL
     public function Get_usuarios(){
-        $sql= "SELECT username,  rol ,fullname ";
+        $sql= "SELECT usuario.id, username,  rol , fullname ";
         $sql.=" FROM usuario ";
         $sql.=" INNER JOIN rol ";
         $sql.=" ON usuario.id_rol = rol.id ";
@@ -102,10 +107,10 @@ class UsuarioModel extends Model{
     }
 //METODO UPDATE 
     public function Actualizar(){
-        $sql="UPDATE usuarios SET username=?, password=?, id_rol, fullname=?  WHERE id =?";
+        $sql="UPDATE usuario SET username=?, password=?, id_rol=?, fullname=?  WHERE id =?";
         try {
-            $stm=$this->pdo->prepare();
-            $stm->execute(array(
+            $stm=$this->pdo->prepare($sql)->execute(
+                array(
                 $this->username,
                 $this->password,
                 $this->id_rol,

@@ -1,7 +1,7 @@
 <?php
 require_once 'Models/UsuarioModel.php';
 
-class UsuarioController {
+class UsuarioController {   
 
 //METODO REGISTRAR 
 
@@ -21,7 +21,9 @@ class UsuarioController {
                         'fullname'=>'jose'
                     ));
                 $respuesta=$Usuario->Guardar();
-                echo $respuesta;
+                echo json_encode(array(
+                    'respuesta'=>$respuesta
+                ));
             
                 } else {
                     echo "No puedes acceder a esta ruta";
@@ -33,11 +35,11 @@ class UsuarioController {
 //TODOS LOS USUARIOS
     public function Usuarios(){
         $Usuario= new UsuarioModel();
-        if ($_GET['rol']) {
+        if (isset($_GET['rol'])) {
             $rol=$_GET['rol'];           
             $Usuarios=$Usuario->Get_ALL_rol($rol); 
             echo json_encode($Usuarios);
-        } elseif ($_GET['user']) {
+        } elseif (isset($_GET['user'])) {
             $user=$_GET['user'];            
             $Usuarios=$Usuario->Get_username($user); 
             echo json_encode($Usuarios); 
@@ -53,7 +55,52 @@ class UsuarioController {
 
     }
 
+//ELIMINAR USUARIO
 
+    public function Eliminar(){
+    
+        if (isset($_GET['id'])) {
+            $id=$_GET['id'];
+            $Usuario= new UsuarioModel();
+            $Usuario->_SET('id',$id);
+            $r=$Usuario->Eliminar();
+            echo json_encode(array(
+                'respuesta'=>$r
+            ));
+            } else {
+                echo json_encode(array(
+                    'respuesta'=>'no selecionaste ningun usuario'
+                ));
+            }
+        
+    }
+
+//ACTUALIZAR USUARIO
+    public function Actualizar (){
+        
+        if (isset($_GET['id'])) {
+            $id=$_GET['id'];
+            $password='juan';
+            $hash=password_hash($password,PASSWORD_BCRYPT);
+            $Usuario= new UsuarioModel();
+            $Usuario->Set_Object($r=[
+                'id'=>$id,
+                'username'=>'juan',
+                'password'=>$hash,
+                'id_rol'=>2,
+                'fullname'=>'juan'
+            ]);
+            $r=$Usuario->Actualizar();
+            echo json_encode(array(
+                'response'=>$r
+            )); 
+        } else {
+            echo json_encode(array(
+                'response'=>'No ha Seleccionado ningun Usuario'
+            ));
+        }
+        
+    }
 
 
 
