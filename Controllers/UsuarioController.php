@@ -115,9 +115,9 @@ class UsuarioController {
             if ($Usuario) {
                 if (password_verify($password,$Usuario->password)){
                     session_start();
-                $_SESSION['admin']=true;
+                $_SESSION['inciado']=true;
                 $_SESSION['rol']=$Usuario->rol;
-                 return $_SESSION;
+                return $_SESSION;
                 }else{
                     echo "contraseñan incorrecta";
                 }

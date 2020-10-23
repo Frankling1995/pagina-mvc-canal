@@ -10,7 +10,7 @@ require_once 'Config/Server.php';
 //           |          //
 //           |          //
 //           V          //
-
+session_start();
 $App = App::Router();
 
 

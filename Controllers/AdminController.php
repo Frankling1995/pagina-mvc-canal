@@ -1,5 +1,5 @@
 <?php 
-
+ require_once 'Models/UsuarioModel.php';
 
 class AdminController{
 
@@ -28,8 +28,34 @@ class AdminController{
     }
 
     public function Validacion(){
-        UsuarioController::Login();
-        AdminController::Principal();
+        $Usuario= new UsuarioModel();
+        /* $username =$_POST['username'];
+         $password=$_POST['password'];*/
+ 
+         $username ='admin';
+         $password='admin';
+ 
+         if (isset($username)) {
+             $Usuario=$Usuario->Get_username($username);
+             if ($Usuario) {
+                 if (password_verify($password,$Usuario->password)){
+                
+                 $_SESSION['inciado']=true;
+                 $_SESSION['rol']=$Usuario->rol;
+                 header('location:'. PRINCIPAL);
+                 }else{
+                     echo "contraseñan incorrecta";
+                 }
+                 
+             }else{
+                 echo "usuario no registrado ";
+             }
+             
+         } else {
+             # code...
+         }
+        
+        
     }
 
     public function LOGOUT(){

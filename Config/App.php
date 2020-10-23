@@ -58,10 +58,10 @@ Class App {
 
 //UTILS PARA COMPROBAR LA SECCION ADMINISTRADOR 
     public  function IsAdmin(){
-       if (isset($_SESSION)) {
-        AdminController::Principal();
+       if ($_SESSION) {
+        header('location:'. PRINCIPAL);
        } else {
-        AdminController::login();
+        header('location:'.LOGING);
        }
         
 
