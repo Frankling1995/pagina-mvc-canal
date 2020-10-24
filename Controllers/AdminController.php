@@ -4,7 +4,7 @@
 class AdminController{
 
     public function login(){
-        echo 'login';
+        require_once 'Views/Admin/Login.php';
     } 
 
     public function Usuarios(){
@@ -29,31 +29,32 @@ class AdminController{
 
     public function Validacion(){
         $Usuario= new UsuarioModel();
-        /* $username =$_POST['username'];
-         $password=$_POST['password'];*/
- 
+         $username =$_POST['username'];
+         $password=$_POST['password'];
+        /* 
          $username ='admin';
-         $password='admin';
+         $password='admin';*/
  
-         if (isset($username)) {
-             $Usuario=$Usuario->Get_username($username);
-             if ($Usuario) {
-                 if (password_verify($password,$Usuario->password)){
+        if (isset($username)) {
+            $Usuario=$Usuario->Get_username($username);
+            if ($Usuario) {
+                if (password_verify($password,$Usuario->password)){
+                       
+                    $_SESSION['inciado']=true;
+                    $_SESSION['rol']=$Usuario->rol;
+                    
+                    header('location:'. PRINCIPAL);
+                }else{
+                    echo "contraseñan incorrecta";
+                }
                 
-                 $_SESSION['inciado']=true;
-                 $_SESSION['rol']=$Usuario->rol;
-                 header('location:'. PRINCIPAL);
-                 }else{
-                     echo "contraseñan incorrecta";
-                 }
-                 
-             }else{
-                 echo "usuario no registrado ";
-             }
-             
-         } else {
-             # code...
-         }
+            }else{
+            echo "usuario no registrado ";
+            }
+            
+        } else {
+            # code...
+        }
         
         
     }

@@ -1,8 +1,8 @@
 <?php
-//---------ARCHIVOS DE CONFIGURACION INICIA---------//
-require_once 'Config/Autoload.php';
-require_once 'Config/App.php';
-require_once 'Config/Server.php';
+//---------ARCHIVOS DE CONFIGURACION INICIAL---------//
+require_once 'Config/Autoload.php';                 //
+require_once 'Config/App.php';                     //
+require_once 'Config/Server.php';                 //
 //-----------------------------------------------//
 
 
@@ -10,7 +10,7 @@ require_once 'Config/Server.php';
 //           |          //
 //           |          //
 //           V          //
-session_start();
+
 $App = App::Router();
 
 

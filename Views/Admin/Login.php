@@ -1,10 +1,10 @@
-<?php
-
-var_dump($_SESSION);			
-?>	
+<?php App::BlockLogin();?>	
 
 
-<form action="" method="post">
+<form action="<?=VALIDACION;?>" method="post">
+    <input type="text" name="username" id="username">
+    <input type="password" name="password" id="password">
+    <input type="submit" value="enviar">
 
 
 </form>

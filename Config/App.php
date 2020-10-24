@@ -33,6 +33,7 @@ Class App {
                     break; 
                 
                 default: if ($_REQUEST['c']=="Admin") {
+                            session_start();
                             $n_controller= $_GET['c'].'Controller';
                             $controller= new $n_controller();
                     
@@ -57,13 +58,12 @@ Class App {
     }
 
 //UTILS PARA COMPROBAR LA SECCION ADMINISTRADOR 
-    public  function IsAdmin(){
-       if ($_SESSION) {
-        header('location:'. PRINCIPAL);
-       } else {
-        header('location:'.LOGING);
-       }
-        
+    public  function RedirectLogin(){
+        if ($_SESSION['inciado']) {} else {header('location:'.LOGING);}
+    }
+
+    public  function BlockLogin(){
+        if (isset($_SESSION['inciado'])) {header('location:'. PRINCIPAL);} 
 
 
     

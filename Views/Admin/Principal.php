@@ -1,8 +1,5 @@
-<?php
+<?php App::RedirectLogin();?>	
 
-App::IsAdmin();
-
-
-?>			
-
+ <h1>principal</h1>
+ <br>
 <a href="<?=LOGOUT;?>">CERRAR</a>

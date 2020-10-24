@@ -6,5 +6,6 @@
     define("LOGOUT","http://localhost/pagina-mvc-canal/Admin/logout");
     define("LOGING","http://localhost/pagina-mvc-canal/Admin/");
     define("PRINCIPAL","http://localhost/pagina-mvc-canal/Admin/principal");
+    define("VALIDACION","http://localhost/pagina-mvc-canal/Admin/Validacion");
 
     
