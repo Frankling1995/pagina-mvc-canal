@@ -64,11 +64,11 @@ Class App {
 
     public  function BlockLogin(){
         if (isset($_SESSION['inciado'])) {header('location:'. PRINCIPAL);} 
-
-
-    
     }
 
+    public  function IsAdmin(){
+        if ($_SESSION['rol']==='administrador') {return true;} else{return false;} 
+    }
     
 
 //FILTAR IPS DE ENTRADA 
