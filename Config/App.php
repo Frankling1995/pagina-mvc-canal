@@ -57,15 +57,17 @@ Class App {
             }
     }
 
-//UTILS PARA COMPROBAR LA SECCION ADMINISTRADOR 
+//UTILS 
+
+    //REDIDECIONA LOGIN 
     public  function RedirectLogin(){
         if ($_SESSION['inciado']) {} else {header('location:'.LOGING);}
     }
-
+    //SI EXISTE SECCION BLOQUEA EL ACCESO AL LOGIN 
     public  function BlockLogin(){
         if (isset($_SESSION['inciado'])) {header('location:'. PRINCIPAL);} 
     }
-
+    //COMPRUEBA LA SECCION ADMINISTRADOR 
     public  function IsAdmin(){
         if ($_SESSION['rol']==='administrador') {return true;} else{return false;} 
     }
