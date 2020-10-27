@@ -54,7 +54,6 @@ class AdminController{
     public function LOGOUT(){
         session_unset ();
         session_destroy();
-        
         header('location:'.LOGING);
     }
 
