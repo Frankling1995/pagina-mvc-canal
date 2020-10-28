@@ -35,9 +35,18 @@ class ProgramacionModel extends Model{
         $sql='INSERT INTO programa (programa,descripcion,hora_incio,hora_final,id_media ) VALUES (?,?,?,?,? )';
         
         try {
-            //code...
+           $stm=$this->pdo->prepare($sql)
+           ->execute(array(
+            $this->programa,
+            $this->descripcion,
+            $this->hora_incio,
+            $this->hora_final,
+            $this->id_media,
+
+           ));
+
         } catch (Exception $e) {
-            //throw $th;
+            
         }
 
     }
