@@ -30,7 +30,7 @@ class ProgramacionModel extends Model{
 
 
 
-// METODO CREATE 
+//METODO CREATE 
     public  function Guardar(){
         $sql='INSERT INTO programa (programa,descripcion,hora_incio,hora_final,id_media ) VALUES (?,?,?,?,? )';
         
@@ -41,16 +41,48 @@ class ProgramacionModel extends Model{
             $this->descripcion,
             $this->hora_incio,
             $this->hora_final,
-            $this->id_media,
+            $this->id_media
 
            ));
+           return 'Programa Agregado';
 
         } catch (Exception $e) {
+            
+            return 'Error en SQL  ' .$e ;
             
         }
 
     }
+//METEDO READ TODOS LOS ELEMENTOS  
+ 
+    public function  Get_all_programa(){
+        $sql="SELECT programa.id , programa , descripcion , hora_inicio, hora_final, url_media ";
+        $sql.="FROM programa ";
+        $sql.=" INNER JOIN media ";
+        $sql.=" ON programa.id_media = media.id ";
+        try {
+            $stm= $this->pdo->prepare($sql);
+            $stm->execute(array($username));
+            $r=$stm->fetchAll(PDO::FETCH_OBJ);
+            return $r;         
+            
+         } catch (Exception $e) {             
+             return 'Error en SQL  ' .$e ;
+             
+         }
 
+
+    }
+//METODO UPDATE 
+    public function  Actualizar(){
+     $sql="UPDATE programa SET programa=?, descripcion=?, hora_incio=?, hora_final=? ,id_media=?  WHERE id =?";
+
+     try {
+        
+        } catch (Exception $e ) {
+         
+     }
+    }
 
 
 
