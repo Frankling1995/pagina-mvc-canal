@@ -62,7 +62,7 @@ class ProgramacionModel extends Model{
         $sql.=" ON programa.id_media = media.id ";
         try {
             $stm= $this->pdo->prepare($sql);
-            $stm->execute(array($username));
+            $stm->execute();
             $r=$stm->fetchAll(PDO::FETCH_OBJ);
             return $r;         
             
@@ -96,7 +96,42 @@ class ProgramacionModel extends Model{
 
     }
     }
+//METODO DELETE 
+
+    public function  Eliminar(){
+        $sql="DELETE  FROM  programa WHERE id=?";
+        try {
+            $stm=$this->pdo->prepare($sql)
+            ->execute(array(
+                $this->id
+            )); 
+          
+        } catch (Exception $e) {
+            return "Error SQL ".$e;
+        }
+
+    }
+
+//METODO READ POR UN SOLO REGISTRO SEGUN EL CAMPO PROGRAMA 
+
+     public function  Get_programa($programa){
+        $sql="SELECT programa.id , programa , descripcion , hora_inicio, hora_final, url_media ";
+        $sql.="FROM programa ";
+        $sql.=" INNER JOIN media ";
+        $sql.=" ON programa.id_media = media.id ";
+        $sql.=" WHERE programa=? ";
+        try {
+            $stm= $this->pdo->prepare($sql);
+            $stm->execute(array($programa));
+            $r=$stm->fetchAll(PDO::FETCH_OBJ);
+            return $r;         
+            
+        } catch (Exception $e) {             
+            return 'Error en SQL  ' .$e ;
+            
+        }
 
 
+     }
 
 }
