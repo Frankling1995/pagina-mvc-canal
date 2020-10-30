@@ -35,16 +35,16 @@ class ProgramacionModel extends Model{
         $sql='INSERT INTO programa (programa,descripcion,hora_incio,hora_final,id_media ) VALUES (?,?,?,?,? )';
         
         try {
-           $stm=$this->pdo->prepare($sql)
-           ->execute(array(
+            $stm=$this->pdo->prepare($sql)
+            ->execute(array(
             $this->programa,
             $this->descripcion,
             $this->hora_incio,
             $this->hora_final,
             $this->id_media
 
-           ));
-           return 'Programa Agregado';
+        ));
+        return 'Programa Agregado';
 
         } catch (Exception $e) {
             
@@ -54,7 +54,7 @@ class ProgramacionModel extends Model{
 
     }
 //METEDO READ TODOS LOS ELEMENTOS  
- 
+
     public function  Get_all_programa(){
         $sql="SELECT programa.id , programa , descripcion , hora_inicio, hora_final, url_media ";
         $sql.="FROM programa ";
@@ -66,22 +66,35 @@ class ProgramacionModel extends Model{
             $r=$stm->fetchAll(PDO::FETCH_OBJ);
             return $r;         
             
-         } catch (Exception $e) {             
-             return 'Error en SQL  ' .$e ;
-             
-         }
+        } catch (Exception $e) {             
+            return 'Error en SQL  ' .$e ;
+            
+        }
 
 
     }
 //METODO UPDATE 
     public function  Actualizar(){
-     $sql="UPDATE programa SET programa=?, descripcion=?, hora_incio=?, hora_final=? ,id_media=?  WHERE id =?";
+    $sql="UPDATE programa SET programa=?, descripcion=?, hora_incio=?, hora_final=? ,id_media=?  WHERE id =?";
 
-     try {
+        try {
+            $stm= $this->pdo->prepare($sql)
+            ->execute(array(
+                $this->programa,
+                $this->descripcion,
+                $this->hora_incio,
+                $this->hora_final,
+                $this->id_media,
+                $this->id
+            ));
+
+            return "los Datos del programa ".$this->Programa." actualizados";
         
-        } catch (Exception $e ) {
-         
-     }
+        } catch (Exception $e) {
+        
+            return "Error SQL ".$e;
+
+    }
     }
 
 
