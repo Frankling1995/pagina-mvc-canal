@@ -4,7 +4,7 @@ require_once 'Models/Model.php';
 
 class ProgramacionModel extends Model{
 
-// CAMPOS DE LA TABLA PROGRAMA
+//CAMPOS DE LA TABLA PROGRAMA
     private $id ;
     private $programa;
     private $descripcion;
@@ -114,7 +114,7 @@ class ProgramacionModel extends Model{
 
 //METODO READ POR UN SOLO REGISTRO SEGUN EL CAMPO PROGRAMA 
 
-     public function  Get_programa($programa){
+    public function  Get_programa($programa){
         $sql="SELECT programa.id , programa , descripcion , hora_inicio, hora_final, url_media ";
         $sql.="FROM programa ";
         $sql.=" INNER JOIN media ";
@@ -132,6 +132,8 @@ class ProgramacionModel extends Model{
         }
 
 
-     }
+    }
+
+
 
 }
