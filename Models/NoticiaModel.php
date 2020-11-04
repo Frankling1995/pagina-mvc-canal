@@ -32,18 +32,35 @@ public function Set_Object($r){
 //SEIS NOTICIAS PRINCIPAL
 
     public function  noticia_principal(){
-        $sql="SELECT  titulo, contenido, categoria , url_media, fullname, fecha  ";
-    
-
-    
-
-
-
-
+        $sql = "SELECT n.Titulo, n.Contenido , n.fecha, m.url_media";
+        $sql.=" AS principal ,ms.url_media As secundaria , mt.url_media As media3";
+        $sql.="FROM noticia AS n";
+        $sql.="INNER JOIN noticia_media AS nm ON  n.id_media=nm.id_noti_media ";
+        $sql.="INNER JOIN media As m ON nm.media=m.id";
+        $sql.="ORDE BY n.fecha ASC LIMIT 6";
 
 
 
+
+
+}
 
 }
 
-}
+/*
+        $sql = "SELECT n.Titulo, n.Contenido , c.categoria, u.fullname ,n.fecha, m.url_media";
+        $sql.=" AS principal ,ms.url_media As secundaria , mt.url_media As media3";
+        $sql.="FROM noticia AS n";
+        $sql.="INNER JOIN categoria AS c  ON n.id_categoria=c.id";
+        $sql.="INNER JOIN usuario AS u ON n.id_usuario=u.id";
+        $sql.="INNER JOIN noticia_media AS nm ON  n.id_media=nm.id_noti_media ";
+        $sql.="INNER JOIN media As m ON nm.media=m.id";
+        $sql.="INNER JOIN media AS ms ON nm.media_2= ms.id ";
+        $sql.="INNER JOIN  media AS mt ON nm.media_3=mt.id";
+        $sql.="ORDE BY n.fecha ASC LIMIT 6";
+
+
+
+
+
+*/
