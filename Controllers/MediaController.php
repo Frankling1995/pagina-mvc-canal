@@ -34,6 +34,7 @@ class MediaController{
             'tipo'=>'imagen'
         ]);
         $Model->Guardar();
+        echo $Model->_GET("id");
     }
 
 //ACTUALIZAR MEDIA 
@@ -61,7 +62,8 @@ class MediaController{
     public function borrar(){
         $id=$_GET['id'];
         $Model= new MediaModel();
-        $respuesta=$Model->Eliminar($id);
+        $Model->_SET('id',$id);
+        $respuesta=$Model->Eliminar();
         echo json_encode($rs=[
             'response'=>$respuesta,
             'Estado'=>'Correcto'

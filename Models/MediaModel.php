@@ -48,6 +48,7 @@ class MediaModel extends Model {
                 $this->url_media,
                 $this->tipo,
             ));
+            $this->id= $this->pdo->lastInsertId();
         } catch (Exception $e) {
             return 'Error en el sql';
         }
@@ -101,7 +102,7 @@ class MediaModel extends Model {
         $sql= "DELETE FROM MEDIA WHERE id= ?";
         try {
             $stm=$this->pdo->prepare($sql);
-            $stm->execute(array($id));
+            $stm->execute(array($this->$id));
             return "Media eliminida satisfactoriamente";
         } catch (Exception $e) {
             return " error en la consulta ";

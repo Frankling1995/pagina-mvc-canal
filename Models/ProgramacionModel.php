@@ -124,7 +124,7 @@ class ProgramacionModel extends Model{
         try {
             $stm= $this->pdo->prepare($sql);
             $stm->execute(array($programa));
-            $r=$stm->fetchAll(PDO::FETCH_OBJ);
+            $r=$stm->fetch(PDO::FETCH_OBJ);
             return $r;         
             
         } catch (Exception $e) {             
