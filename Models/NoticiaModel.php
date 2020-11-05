@@ -1,6 +1,6 @@
 <?php   
 
-require_once 'Model/Mode.php';
+require_once 'Model.php';
 
 class NoticiaModel extends Model{
 
@@ -138,7 +138,7 @@ public function _SET($k, $v){return $this->$k = $v;}
         $sql.="WHERE id = ?";
         try {
             $stm= $this->pdo->prepare($sql);
-            $stm->execute(array($$id));
+            $stm->execute(array($id));
             $r=$stm->fetch(PDO::FETCH_OBJ);
             return $r; 
         } catch (Exception $e) {
@@ -148,20 +148,3 @@ public function _SET($k, $v){return $this->$k = $v;}
 
 }
 
-/*
-        $sql = "SELECT n.Titulo, n.Contenido , c.categoria, u.fullname ,n.fecha, m.url_media";
-        $sql.=" AS principal ,ms.url_media As secundaria , mt.url_media As media3";
-        $sql.="FROM noticia AS n";
-        $sql.="INNER JOIN categoria AS c  ON n.id_categoria=c.id";
-        $sql.="INNER JOIN usuario AS u ON n.id_usuario=u.id";
-        $sql.="INNER JOIN noticia_media AS nm ON  n.id_media=nm.id_noti_media ";
-        $sql.="INNER JOIN media As m ON nm.media=m.id";
-        $sql.="INNER JOIN media AS ms ON nm.media_2= ms.id ";
-        $sql.="INNER JOIN  media AS mt ON nm.media_3=mt.id";
-        $sql.="ORDE BY n.fecha ASC LIMIT 6";
-
-
-
-
-
-*/
