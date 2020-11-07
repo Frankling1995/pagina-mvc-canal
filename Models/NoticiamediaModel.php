@@ -31,16 +31,31 @@ public function Set_Object($r){
                 $this->media_2,
                 $this->media_3
             ));
-            $this->id= $this->pdo->lastInsertId();
+           return $this->id= $this->pdo->lastInsertId();
         } catch (Exception $e) {
-            return 'Error en el sql';
+            return 'Error en el sql ' .$e ;
         }
+    
 
 
+
+    
+
+
+
+
+
+}
+//METODO UPDATE
+    public function  Actualizartodos(){
+        $sql="UPDATE  noticia_media SET media=? ,media_2=? ,media_3=?  WHERE id_noti_media =?";
+        $stm= $this->pdo->prepare($sql)
+        ->execute(array(
+            $this->media,
+            $this->media_2,
+            $this->media_3,
+            $this->id_noti_media
+        ));
+        
     }
-
-
-
-
-
 }
