@@ -51,9 +51,6 @@ public function Set_Object($r){
             return 'Error en el sql ' .$e ;
         }
         
-        
-      
-        
     }
 
 //METODO ACTULIZAR PERSONALIZADO
