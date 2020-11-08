@@ -31,31 +31,56 @@ public function Set_Object($r){
                 $this->media_2,
                 $this->media_3
             ));
-           return $this->id= $this->pdo->lastInsertId();
+        return $this->id= $this->pdo->lastInsertId();
         } catch (Exception $e) {
             return 'Error en el sql ' .$e ;
         }
-    
-
-
-
-    
-
-
-
-
-
-}
+    }
 //METODO UPDATE
     public function  Actualizartodos(){
         $sql="UPDATE  noticia_media SET media=? ,media_2=? ,media_3=?  WHERE id_noti_media =?";
-        $stm= $this->pdo->prepare($sql)
-        ->execute(array(
-            $this->media,
-            $this->media_2,
-            $this->media_3,
-            $this->id_noti_media
-        ));
+        try {
+            $stm= $this->pdo->prepare($sql)
+            ->execute(array(
+                $this->media,
+                $this->media_2,
+                $this->media_3,
+                $this->id_noti_media
+            ));
+        } catch (Exception $e) {
+            return 'Error en el sql ' .$e ;
+        }
         
+        
+      
+        
+    }
+
+//METODO ACTULIZAR PERSONALIZADO
+
+    public function Actualizar($key){
+        $sql="UPDATE  noticia_media SET". $key."=?   WHERE id_noti_media =?";
+        try {
+            $stm= $this->pdo->prepare($sql)
+            ->execute(array(
+                $this->$key,
+                $this->id_noti_media
+            ));
+        } catch (Exception $e) {
+            return 'Error en el sql ' .$e ;
+        }
+    }
+//METODO DELETE
+    public function Eliminar(){
+        $sql="DELETE  FROM noticia_media WHERE id_noti_media= ?";
+
+        try {
+            $stm= $this->pdo->prepare($sql)
+            ->execute(array(
+                $this->id_noti_media
+            ));
+        } catch (Exception $e) {
+            return 'Error en el sql ' .$e ;
+        }
     }
 }
