@@ -3,6 +3,7 @@ require_once 'Models/MediaModel.php';
 
 class MediaController{
 
+
 //MUESTRA LA MEDIA INDICA POR EL ID
     public function Mediaid(){
     $id=$_GET['id'];
