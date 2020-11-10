@@ -106,12 +106,14 @@ public function _SET($k, $v){return $this->$k = $v;}
 
 //SEIS NOTICIAS PRINCIPAL
 
-    public function  noticia_principal(){
-        $sql = "SELECT m.id, n.Titulo, n.Contenido , n.fecha, m.url_media AS principal ";
-        $sql.="FROM noticia AS n";
-        $sql.="INNER JOIN noticia_media AS nm ON n.id_media=nm.id_noti_media";        
-        $sql.="INNER JOIN media As m ON nm.media=m.id ";
-        $sql.="ORDE BY n.fecha ASC LIMIT 6";
+    public function  noticia_principal (){
+        $sql = "SELECT n.id,  n.Titulo, n.Contenido , n.fecha, m.url_media AS principal 
+            FROM noticia AS n 
+            INNER JOIN noticia_media AS nm ON n.id_media=nm.id_noti_media 
+            INNER JOIN media As m ON nm.media=m.id
+            LIMIT 6
+            ";
+     
         try {
             $stm= $this->pdo->prepare($sql);
             $stm->execute();
@@ -125,17 +127,16 @@ public function _SET($k, $v){return $this->$k = $v;}
 
 //  NOTICIA UNICA
     
-    public function Get_noticia(){
-        $sql = "SELECT n.Titulo, n.Contenido , c.categoria, u.fullname ,n.fecha, m.url_media";
-        $sql.=" AS principal ,ms.url_media As secundaria , mt.url_media As media3";
-        $sql.="FROM noticia AS n";
-        $sql.="INNER JOIN categoria AS c  ON n.id_categoria=c.id";
-        $sql.="INNER JOIN usuario AS u ON n.id_usuario=u.id";
-        $sql.="INNER JOIN noticia_media AS nm ON  n.id_media=nm.id_noti_media ";
-        $sql.="INNER JOIN media As m ON nm.media=m.id";
-        $sql.="INNER JOIN media AS ms ON nm.media_2= ms.id ";
-        $sql.="INNER JOIN  media AS mt ON nm.media_3=mt.id";
-        $sql.="WHERE id = ?";
+    public function Get_noticia($id){
+        $sql = "SELECT n.Titulo, n.Contenido , c.categoria, u.fullname ,n.fecha, m.url_media\n"
+        . " AS principal ,ms.url_media As secundaria , mt.url_media As media3"
+        . " FROM noticia AS n"
+        . " INNER JOIN categoria AS c  ON n.id_categoria=c.id"
+        . " INNER JOIN usuario AS u ON n.id_usuario=u.id"
+        . " INNER JOIN noticia_media AS nm ON  n.id_media=nm.id_noti_media "
+        . " INNER JOIN media As m ON nm.media=m.id"
+        . " INNER JOIN media AS ms ON nm.media_2= ms.id "
+        . " INNER JOIN  media AS mt ON nm.media_3=mt.id WHERE n.id = ?";
         try {
             $stm= $this->pdo->prepare($sql);
             $stm->execute(array($id));

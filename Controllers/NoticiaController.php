@@ -1,5 +1,5 @@
 <?php
-require_once 'Model/NoticiaModel.php';
+require_once 'Models/NoticiaModel.php';
 require_once 'Models/NoticiamediaModel.php';
 require_once 'MediaController.php';
 
@@ -18,8 +18,9 @@ class NoticiaController {
 
     }
     public function Noticiadata(){
+        $id=$_GET['id'];
         $Model= new NoticiaModel();
-        $noticia= $Model->Get_noticia();
+        $noticia= $Model->Get_noticia($id);
          echo json_encode ($noticia); 
 
 
