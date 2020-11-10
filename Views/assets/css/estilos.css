@@ -142,7 +142,15 @@ a{
     
 }
 
-/*programcion*/
+#seccion-noticias p{
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow: ellipsis;
+    
+
+}
+
+/**programcion**/
 .programacion{
     background-color:  #ee5555 ;
     color: #ffffff;

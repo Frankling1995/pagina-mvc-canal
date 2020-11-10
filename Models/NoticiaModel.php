@@ -51,11 +51,13 @@ public function _SET($k, $v){return $this->$k = $v;}
 
 //METODO READ ALL
     public function Get_all_noticias() {
-        $sql = "SELECT m.id, n.Titulo, n.Contenido , n.fecha, m.url_media AS principal ";
-        $sql.="FROM noticia AS n";
-        $sql.="INNER JOIN noticia_media AS nm ON n.id_media=nm.id_noti_media";        
-        $sql.="INNER JOIN media As m ON nm.media=m.id ";
-        $sql.="ORDE BY n.fecha ASC ";
+        $sql = "SELECT n.Titulo, n.Contenido , c.categoria, u.fullname ,n.fecha, m.url_media\n"
+        . " AS principal "
+        . " FROM noticia AS n"
+        . " INNER JOIN categoria AS c  ON n.id_categoria=c.id"
+        . " INNER JOIN usuario AS u ON n.id_usuario=u.id"
+        . " INNER JOIN noticia_media AS nm ON  n.id_media=nm.id_noti_media "
+        . " INNER JOIN media As m ON nm.media=m.id";
         try {
             $stm= $this->pdo->prepare($sql);
             $stm->execute();
@@ -110,7 +112,7 @@ public function _SET($k, $v){return $this->$k = $v;}
         $sql = "SELECT n.id,  n.Titulo, n.Contenido , n.fecha, m.url_media AS principal 
             FROM noticia AS n 
             INNER JOIN noticia_media AS nm ON n.id_media=nm.id_noti_media 
-            INNER JOIN media As m ON nm.media=m.id
+            INNER JOIN media As m ON nm.media=m.id ORDER BY n.fecha DESC
             LIMIT 6
             ";
      

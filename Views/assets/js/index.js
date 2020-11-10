@@ -1,2 +1,4 @@
 
-fetch().then(data => console.log(data))
+ const cardnoticia = document.querySelector('#seccion-noticias p');
+
+ console.log(cardnoticia);

@@ -25,4 +25,14 @@ class NoticiaController {
 
 
     }
+
+    public function Noticiasdata(){
+        
+        $Model= new NoticiaModel();
+        $noticias= $Model->Get_all_noticias();
+        echo json_encode ($noticias); 
+
+
+    }
+
 }
