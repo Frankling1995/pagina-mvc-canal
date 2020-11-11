@@ -143,6 +143,7 @@ a{
 }
 
 #seccion-noticias p{
+        height: 140px;
         overflow:hidden;
         white-space:nowrap;
         text-overflow: ellipsis;
