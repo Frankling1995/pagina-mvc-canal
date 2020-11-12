@@ -40,4 +40,5 @@ const ui= new UI();
 const noticiacard=api.Get_noticia();
 
 
-ui.rendernoticia(noticiacard,noticias, fragment).then((fragment)=>contenedornoticias.appendChild(fragment));
+ui.rendernoticia(noticiacard,noticias, fragment).
+then((fragment)=>contenedornoticias.appendChild(fragment));
