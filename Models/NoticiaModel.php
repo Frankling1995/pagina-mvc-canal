@@ -57,7 +57,7 @@ public function _SET($k, $v){return $this->$k = $v;}
         . " INNER JOIN categoria AS c  ON n.id_categoria=c.id"
         . " INNER JOIN usuario AS u ON n.id_usuario=u.id"
         . " INNER JOIN noticia_media AS nm ON  n.id_media=nm.id_noti_media "
-        . " INNER JOIN media As m ON nm.media=m.id";
+        . " INNER JOIN media As m ON nm.media=m.id  ORDER BY n.fecha DESC";
         try {
             $stm= $this->pdo->prepare($sql);
             $stm->execute();

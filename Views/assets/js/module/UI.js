@@ -1,6 +1,6 @@
 export default class UI{
 
-    async rendernoticia (response,template,fragment){
+    async rendernoticia (response,template,fragment,Content){
 
         const data = await response ;
         data.forEach((data)=>{
@@ -12,7 +12,7 @@ export default class UI{
                         </div>
                         <div class="row  no-gutters justify-content-center">
                             <div class="col-md-10  pt-4 noticia-info">
-                            <h3 class="text-center text-uppercase">nombre de la notica</h3>
+                            <h3 class="text-center text-uppercase">${data.Titulo}</h3>
                             <p class="text-center text-lowercase ">
                             Desarrollaremos un sistema modelo vista controlador básico, justo para entender 
                             ¿Cómo funciona este patrón de diseño de arquitectura de Software? <br>
@@ -24,12 +24,14 @@ export default class UI{
                     </div>
                 </div>
             </a>`
-           
+        
             fragment.appendChild(template);
     }
     
     );
-     return fragment;
+
+    Content.appendChild(fragment)
+    
 
 } 
 }

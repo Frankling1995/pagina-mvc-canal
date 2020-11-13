@@ -9,6 +9,6 @@ const api= new API();
 const ui= new UI();
 const noticiacard=api.Get_noticia();
 
-
-ui.rendernoticia(noticiacard,noticias, fragment).
-then((fragment)=>contenedornoticias.appendChild(fragment));
+if(contenedornoticias){
+ui.rendernoticia(noticiacard,noticias, fragment,contenedornoticias);
+}
