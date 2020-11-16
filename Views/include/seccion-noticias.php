@@ -6,9 +6,9 @@
 </section>
 
 <div class="container" id="seccion-noticias">
-<div class="row py-4  " id="Cards-noticias">
+    <div class="row py-4  " id="Cards-noticias">
 
-        
+            
     </div>
    
 </div>

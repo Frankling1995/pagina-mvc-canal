@@ -60,7 +60,7 @@ class ProgramacionModel extends Model{
         $sql.="FROM programa ";
         $sql.=" INNER JOIN media ";
         $sql.=" ON programa.id_media = media.id ";
-        $sql.=" ORDE BY hora_inicio ASC ";
+        $sql.=" ORDE BY hora_inicio ASC  ";
         try {
             $stm= $this->pdo->prepare($sql);
             $stm->execute();
