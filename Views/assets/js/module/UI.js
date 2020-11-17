@@ -37,10 +37,10 @@ export default class UI{
         }
     }
 
-    recortaDatos(dato){
-        var respuesta = dato;
-        if(dato.length>200){
-           respuesta = dato.substring(0,200)+"...";
+    recortaDatos(data){
+        var respuesta = data;
+        if(data.length>200){
+            respuesta = `${data.substring(0,200)}...`;
         }
         return respuesta;
     }
