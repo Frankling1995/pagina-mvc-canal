@@ -38,9 +38,9 @@ export default class UI{
     }
 
     recortaDatos(data){
-        var respuesta = data;
+        let  respuesta = data;
         if(data.length>200){
-            respuesta = `${data.substring(0,200)}...`;
+            respuesta = `${data.slice(0,200)}...`;
         }
         return respuesta;
     }
