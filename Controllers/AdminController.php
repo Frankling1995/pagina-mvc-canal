@@ -39,12 +39,13 @@ class AdminController{
                 if (password_verify($password,$Usuario->password)){
                     $_SESSION['inciado']=true;
                     $_SESSION['rol']=$Usuario->rol;
-                    header('location:'. PRINCIPAL);
+                     echo json_encode(array('state'=>true));
+                    //header('location:'. PRINCIPAL);
                 }else{
-                    echo "contraseñan incorrecta";
+                    echo  json_encode(array('state'=>"contraseñan incorrecta"));
                 }
             }else{
-                echo "usuario no registrado ";
+                echo json_encode(array('state'=>"usuario no registrado ")); 
             }
         } 
         

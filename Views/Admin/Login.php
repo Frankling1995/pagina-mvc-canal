@@ -26,7 +26,7 @@
                 <img src="<?php echo BASE_URL;?>Views/assets/img/logo.svg" alt="logo" class="logo">
               </div>
               <p class="login-card-description">GESTOR</p>
-              <form action="<?=VALIDACION;?>" method="post">
+              <form  id="formlogin">
                   <div class="form-group">
                     <label for="email" class="sr-only">Usuario</label>
                     <input type="text" name="username" id="username"" class="form-control" placeholder="Usuario">
@@ -49,6 +49,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script type="module" src="<?php echo BASE_URL;?>Views/assets/js/app.js"></script>
 </body>
 </html>
 

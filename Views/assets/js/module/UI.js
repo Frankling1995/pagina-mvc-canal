@@ -2,11 +2,12 @@ export default class UI{
 
     noticias;
     contenedornoticias;
+    formulario;
     
     constructor(){
         this.contenedornoticias = document.querySelector('#seccion-noticias ');
         this.noticias = document.querySelector('#Cards-noticias ');
-        
+        this.formulario = document.querySelector('#formlogin');
     }
 
     async rendernoticiap (response,fragment){
@@ -44,6 +45,8 @@ export default class UI{
         }
         return respuesta;
     }
+    
+   
 
     
 }
