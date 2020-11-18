@@ -7,14 +7,14 @@ export default class UI{
     constructor(){
         this.contenedornoticias = document.querySelector('#seccion-noticias ');
         this.noticias = document.querySelector('#Cards-noticias ');
-        this.formulario = document.querySelector('#formlogin');
+      
     }
 
-    async rendernoticiap (response,fragment){
+    rendernoticiap = async  (response,fragment)=>{
         if(this.contenedornoticias){
             const data = await response ;
             data.forEach((data)=>{
-                    this.noticias.innerHTML+= `<a href="" >
+                    this.noticias.innerHTML+= `
                     <div class="col-md-4 text-center mb-4">
                             <div class="imagen-noticia">
                                 <div class="img-p">
@@ -31,7 +31,7 @@ export default class UI{
                                 </div>
                             </div>
                         </div>
-                    </a>`
+                    `
                 fragment.appendChild(this.noticias);
             });
             this.contenedornoticias.appendChild(fragment)
@@ -46,7 +46,7 @@ export default class UI{
         return respuesta;
     }
     
-   
+    
 
     
 }

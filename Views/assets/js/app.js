@@ -8,11 +8,13 @@ const ui= new UI();
 const noticiap=api.ObtenernoticiasP();
 const formulario = document.querySelector('#formlogin');
 //incio de seccion
-formulario.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    const datosform = new FormData(formulario);
-       api.validarlogin(datosform);
-});
+if(formulario){
+    formulario.addEventListener('submit',(e)=>{
+        e.preventDefault();
+        const datosform = new FormData(formulario);
+        api.validarlogin(datosform);
+    });
+}
 //rederizar noticias pagina principal
     ui.rendernoticiap(noticiap,fragment);
 
