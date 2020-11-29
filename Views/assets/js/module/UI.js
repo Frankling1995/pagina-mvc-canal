@@ -7,7 +7,7 @@ export default class UI{
     constructor(){
         this.contenedornoticias = document.querySelector('#seccion-noticias ');
         this.noticias = document.querySelector('#Cards-noticias ');
-      
+        this.formulario = document.querySelector('#formlogin');
     }
 
     rendernoticiap = async  (response,fragment)=>{
@@ -46,6 +46,15 @@ export default class UI{
         return respuesta;
     }
     
+    InicioSesion(api){
+        if(this.formulario){
+            this.formulario.addEventListener('submit',(e)=>{
+                e.preventDefault();
+                const datosform = new FormData(this.formulario);
+                api.validarlogin(datosform);
+            });
+        }
+    }
     
 
     

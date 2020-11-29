@@ -6,6 +6,6 @@
     define("LOGOUT","http://localhost/pagina-mvc-canal/Admin/logout");//RUTA RAPIDA  DE CIERRE DE SESION
     define("LOGING","http://localhost/pagina-mvc-canal/Admin/");//RUTA RAPIDA LOGIN
     define("PRINCIPAL","http://localhost/pagina-mvc-canal/Admin/principal");//RUTA RAPIDA PRINCIPAL
-    define("VALIDACION","http://localhost/pagina-mvc-canal/Admin/Validacion");//RUTA RAPIDA DE VALIDACION
+
 
     

@@ -1,5 +1,5 @@
 <?php 
- require_once 'Models/UsuarioModel.php';
+require_once 'Models/UsuarioModel.php';
 
 class AdminController{
 

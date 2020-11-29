@@ -5,16 +5,8 @@ import UI from '/pagina-mvc-canal/Views/assets/js/module/UI.js'
 const fragment = document.createDocumentFragment();
 const api= new API();
 const ui= new UI();
-const noticiap=api.ObtenernoticiasP();
-const formulario = document.querySelector('#formlogin');
 //incio de seccion
-if(formulario){
-    formulario.addEventListener('submit',(e)=>{
-        e.preventDefault();
-        const datosform = new FormData(formulario);
-        api.validarlogin(datosform);
-    });
-}
+    ui.InicioSesion(api);
 //rederizar noticias pagina principal
-    ui.rendernoticiap(noticiap,fragment);
+    ui.rendernoticiap(api.ObtenernoticiasP(),fragment);
 
